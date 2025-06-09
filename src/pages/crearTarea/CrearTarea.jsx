@@ -26,7 +26,13 @@ export default function CrearTarea() {
     });
   };
 
-  const crearTarea = async () => {
+  const crearTarea = async () => {  // Validación básica
+    const { titulo, materia, fechaLimite, estado } = formulario;
+
+  if (!titulo.trim() || !materia.trim() || !fechaLimite || !estado) {
+    alertaError("Campos vacíos", "Por favor completa todos los campos.");
+    return;
+  }
     try {
       const respuesta = await fetch(`${apiTareas}`, {
         method: "POST",
@@ -59,7 +65,6 @@ export default function CrearTarea() {
             <input
               type="text"
               name="titulo"
-              value={formulario.titulo}
               onChange={manejarCambio}
               required
             />
@@ -70,7 +75,6 @@ export default function CrearTarea() {
             <input
               type="text"
               name="materia"
-              value={formulario.materia}
               onChange={manejarCambio}
               required
             />
@@ -81,7 +85,6 @@ export default function CrearTarea() {
             <input
               type="date"
               name="fechaLimite"
-              value={formulario.fechaLimite}
               onChange={manejarCambio}
               required
             />
@@ -91,7 +94,6 @@ export default function CrearTarea() {
             Estado:
             <select
               name="estado"
-              value={formulario.estado}
               onChange={manejarCambio}
             >
               <option value="pendiente">Pendiente</option>

@@ -1,14 +1,6 @@
 {
   "tareas": [
     {
-      "id": "1f04",
-      "titulo": "Leer capítulo 2 del libro de historia",
-      "materia": "matematica",
-      "fechaLimite": "2025-06-10",
-      "estado": "pendiente",
-      "idEstudiante": "fe29"
-    },
-    {
       "id": "b5b5",
       "titulo": "Leer capítulo 1 del libro de historia",
       "materia": "matematica",

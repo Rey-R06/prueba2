@@ -155,8 +155,8 @@ export default function Tareas({ estado, api, tareasApi, seTareasApi }) {
               </label>
             </form>
             <div className="botones-modal">
-              <button onClick={guardarCambios}>Guardar</button>
-              <button onClick={() => setTareaSeleccionada(null)}>Cancelar</button>
+              <button className="editar-buttom" onClick={guardarCambios}>Guardar</button>
+              <button className="editar-buttom" onClick={() => setTareaSeleccionada(null)}>Cancelar</button>
             </div>
           </div>
         </div>

@@ -39,35 +39,32 @@ export function alertaRedireccion(redireccion, titulo, mensaje, icono, url) {
     },
   });
 }
-
 export function alertaEliminar(id, api, setTareasApi) {
   Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
+    title: "¿Estás seguro?",
+    text: "¡No podrás revertir esta acción!",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: "Sí, eliminar!",
   }).then((result) => {
+    if (result.isConfirmed) {
+      // ✅ Solo si confirma, eliminamos
       fetch(`${api}/${id}`, {
         method: 'DELETE',
       })
-        .then(() => {
-          Swal.fire('Eliminado', 'La tarea ha sido eliminada.', 'success');
-          setTareasApi((prev) => prev.filter((tarea) => tarea.id !== id)); // 💡 actualiza solo el estado
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error al eliminar");
+          }
+          Swal.fire("Eliminado", "La tarea ha sido eliminada.", "success");
+          setTareasApi((prev) => prev.filter((tarea) => tarea.id !== id));
         })
         .catch((err) => {
-          Swal.fire('Error', 'No se pudo eliminar la tarea.', 'error');
+          Swal.fire("Error", "No se pudo eliminar la tarea.", "error");
           console.error(err);
         });
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success",
-      });
-
     }
   });
 }
