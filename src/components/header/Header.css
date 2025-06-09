@@ -1,0 +1,258 @@
+@import "../../styles/colores.module.css";
+
+.header-principal{
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 135px;
+    background: var(--azulFuerte-color);
+    border-bottom: var(--azul-color) solid 2px;
+    font-family: none;
+    font-size: 1.5rem;
+  }
+  
+.header-principal .logo{
+  margin: 30px 40px 0 ;
+}
+
+.header-principal ul{
+    display: flex;
+    list-style: none;
+    height: 100%;
+    gap: 15%;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 30px;
+    padding: 0;
+  }
+
+
+.header-principal .logo-nav{
+    display: flex;
+}
+
+.header-principal a{
+    transition: 0.8s;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--fuente-color);
+    font-weight: 5
+    00;
+    background: none;
+    text-decoration: none;
+  }
+
+
+.botones-login{
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 40px 0 0;
+}
+
+.botones-login .boton-registrarse p{
+    margin: 0;
+    text-decoration: none;
+    color: var(--cafe-color);
+}
+
+
+.botones-login .boton-sesion p{
+  margin: 0;
+}
+
+.botones-login .boton-registrarse:hover{
+    color: var(--cafe-color);
+}
+
+.botones-login .boton-sesion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cafe-color);
+    border-radius: 50px;
+    width: 100px;
+    height: 50px;
+    text-decoration: none;
+    color: var(--verde-color);
+    transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+
+.botones-login .boton-sesion p{
+  margin: 0;
+}
+
+.botones-login .boton-sesion:hover{
+  background-color: var(--hover-color);
+}
+
+
+  .botones-login .usuario-sesion{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+
+
+.menu-hamburguesa {
+    display: none;
+    visibility: hidden;
+  }
+
+
+/* Para tablets */
+@media (max-width: 900px) { 
+  .header-principal{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header-principal .logo{
+    margin: 10px 20px;
+  }
+
+  .header-principal button:hover{
+    background: transparent;
+  }
+
+  .header-principal a{
+    color: var(--verde-color);
+  }
+  .menu-hamburguesa {
+    display: block;
+    visibility: visible;
+    border: none;
+    background: transparent;
+    color: var(--cafe-color);
+    position: relative;
+    height: 100%;
+    display: block; /* Mostrar botón hamburguesa */
+    font-size: 3.5rem;
+    margin: 0 0 0 20px;
+  }
+
+  .oculto{
+    display: none;
+    visibility: hidden;
+  }
+
+  .menu-oculto{
+    display: flex; 
+    flex-direction: column;
+    position: absolute;
+    top: 135px;
+    width: 100%;
+    height: 250px;
+    background-color: #2e2f04;
+    animation: subirMenu 0.4s ease-in forwards;
+  }
+
+  .menu-abierto{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: 0;
+    top: 135px;
+    width: 100%;
+    height: 250px;
+    background-color: var(--cafe-color);
+    animation: bajarMenu 0.4s ease-out forwards;
+  }
+
+  .header-principal ul{
+    flex-direction: column;
+  }
+
+  .contenedor-logo{
+    gap: 35%;
+  }
+
+  .contenedor-logo img{
+    width: 100px;
+    margin: 20px;
+  }
+  
+  .usuario-sesion span{
+    color: var(--cafe-color);
+  }
+
+  .botones-login .usuario-sesion{
+    gap: 0;
+    flex-direction: column;
+    position: relative;
+    right: -25%;
+  }
+  
+  .header-principal .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .botones-login{
+    margin: 30px 10px 0 0;
+  }
+}
+
+@media (max-width: 600px){
+  .header-principal .logo{
+    align-items: center;
+    margin: 0 10px 0 10px;
+  }
+
+  .menu-hamburguesa{
+      margin: 0 0 0 5px;
+  }
+
+  .logo img{
+    width: 140px;
+  }
+
+  .botones-login{
+    width: 100px;
+    position: relative;
+    right: 25px;
+    margin: 0;
+  }
+
+  .boton-sesion{
+    position: relative;
+    left: 20px;
+  }
+
+  .boton-registrarse{
+    display: none;
+    visibility: hidden;
+  }
+  
+  .botones-login .usuario-sesion{
+    right: 0;
+  }
+}
+  
+@keyframes bajarMenu {
+  from {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes subirMenu {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+}

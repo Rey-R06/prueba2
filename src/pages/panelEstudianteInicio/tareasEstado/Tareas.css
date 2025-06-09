@@ -1,0 +1,156 @@
+.lista-tareas {
+  margin-top: 20px;
+  padding: 2rem 6rem;
+  background-color: #f4f6f8;
+  min-height: 30vh;
+}
+
+.lista-tareas h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.lista-tareas ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+.lista-tareas li {
+  background-color: white;
+  border-left: 6px solid #4a90e2;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.lista-tareas li:hover {
+  transform: scale(1.02);
+}
+
+.lista-tareas li strong {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.lista-tareas li p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Colores según estado */
+/* Estado pendiente */
+.tarea-pendiente {
+  border-left: 6px solid #f5a623 !important;
+  background-color: #fff8e1;
+}
+
+/* Estado completado */
+.tarea-completada {
+  border-left: 6px solid #7ed321 !important;
+  background-color: #e6f9e5;
+  opacity: 0.95;
+}
+
+
+.subtitulo-filtrado {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.botones-modal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.botones-modal button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+}
+
+.botones-modal button:last-child {
+  background-color: #aaa;
+}
+
+.btn-cerrar {
+  position: relative;
+  top: -15px;
+  right: -140px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-cerrar:hover {
+  color: #e74c3c;
+}
+
+
+
+@media (max-width: 600px) {
+.lista-tareas {
+  padding: 2rem 15px;
+}
+
+}
