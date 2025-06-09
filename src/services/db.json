@@ -1,39 +1,35 @@
 {
   "tareas": [
     {
-      "id": "1",
-      "titulo": "Leer capítulo 1 del libro de historia",
-      "materia": "Historia",
-      "fechaLimite": "2025-06-10",
-      "estado": "pendiente"
-    },
-    {
-      "id": "2",
-      "titulo": "Resolver ejercicios de funciones lineales",
-      "materia": "Matemáticas",
-      "fechaLimite": "2025-06-08",
-      "estado": "completada"
-    },
-    {
-      "id": "5",
-      "titulo": "Practicar pronunciación de palabras",
-      "materia": "Inglés",
-      "fechaLimite": "2025-06-09",
-      "estado": "completada"
-    },
-    {
-      "id": "aa22",
+      "id": "1f04",
       "titulo": "Leer capítulo 2 del libro de historia",
       "materia": "matematica",
-      "fechaLimite": "2025-06-19",
-      "estado": "pendiente"
+      "fechaLimite": "2025-06-10",
+      "estado": "pendiente",
+      "idEstudiante": "fe29"
     },
     {
-      "id": "e56b",
-      "titulo": "juab",
-      "materia": "juabeb",
-      "fechaLimite": "2025-06-17",
-      "estado": "pendiente"
+      "id": "b5b5",
+      "titulo": "Leer capítulo 1 del libro de historia",
+      "materia": "matematica",
+      "fechaLimite": "2025-07-02",
+      "estado": "pendiente",
+      "idEstudiante": "7e0a"
+    }
+  ],
+  "estudiantes": [
+    {
+      "id": "fe29",
+      "nombre": "luis",
+      "email": "luis",
+      "contraseña": "1"
+    },
+    {
+      "id": "7e0a",
+      "nombre": "juan",
+      "email": "juan",
+      "contraseña": "2",
+      "tareas": []
     }
   ]
 }

@@ -1,6 +1,7 @@
 import "./Header.css"
 import { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { alertaRedireccion } from "../../helpers/funciones";
 
 export default function Header() {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -8,12 +9,13 @@ export default function Header() {
   
   const location = useLocation();
 
-  let usuarioSesion = {user: "luis"}
+  const navigate = useNavigate();
+
   // Obtener la ruta actual sin el slash inicial
     const pathActual = location.pathname.replace("/", "");
   // Definir las rutas que deben mostrarse
 const navItems = [
-    { path: "", text: "Inicio" },
+    { path: "panel-inicio", text: "Inicio" },
     { path: "crear-tarea", text: "Crear nueva tarea" },
   ];
 
@@ -29,6 +31,13 @@ const navItems = [
       setMenuAbierto(true);
     }
   }
+
+  function cerrarSesion() {
+    localStorage.removeItem("token")
+    localStorage.removeItem("usuario")
+    alertaRedireccion(navigate, "Sesion finalizada", "En Breves segundos cerraremos la sesión", "info", "/")
+  }
+
   return (
     <header className="header-principal">
       <section className="logo-nav">
@@ -59,21 +68,8 @@ const navItems = [
           </ul>
         </nav>
       </section>
-      <section className="botones-login">
-        {usuarioSesion ? (
-          <Link className="usuario-sesion" to="/estudiante-home">
-            <span>{usuarioSesion.user}</span>
-          </Link>
-        ) : (
-          <>
-            <Link to="/login" className="boton-registrarse">
-              <p>Login</p>
-            </Link>
-            <Link to="/registrarse" className="boton-sesion">
-              <p>Sign up</p>
-            </Link>
-          </>
-        )}
+      <section className="botones-cerrar">
+        <button onClick={cerrarSesion} type="button">Salir</button>
       </section>
     </header>
   );

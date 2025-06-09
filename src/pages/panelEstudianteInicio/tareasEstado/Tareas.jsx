@@ -15,16 +15,22 @@ export default function Tareas({ estado, api, tareasApi, seTareasApi }) {
     estado: "",
   });
 
-  //Filtrado de tareas
+  const estudiante = JSON.parse(localStorage.getItem("estudiante"));
+
+  // Filtrado de tareas por estado e id del estudiante
   const tareasFiltradas = tareasApi.filter((tarea) => {
-    if (estado === "totales" || estado === "") return true;
-    return tarea.estado === estado;
+    const perteneceAlEstudiante = tarea.idEstudiante === estudiante.id;
+
+    if (estado === "totales" || estado === "") {
+      return perteneceAlEstudiante;
+    }
+
+    return tarea.estado === estado && perteneceAlEstudiante;
   });
 
-  // Cuando se selecciona una tarea
   const abrirModal = (tarea) => {
     setTareaSeleccionada(tarea);
-    setFormulario(tarea); // copia los datos a editar
+    setFormulario(tarea);
   };
 
   const manejarCambio = (e) => {
@@ -46,25 +52,23 @@ export default function Tareas({ estado, api, tareasApi, seTareasApi }) {
       });
 
       if (respuesta.ok) {
-        // Aquí puedes llamar a una función para recargar tareas desde la API si tienes una
-        alertaConfirmacion("Actualizado", "La tarea se actualizo exitosamente");
-        // Actualiza el estado local reemplazando la tarea actualizada
+        alertaConfirmacion("Actualizado", "La tarea se actualizó exitosamente");
+
         seTareasApi((prev) =>
           prev.map((tarea) => (tarea.id === formulario.id ? formulario : tarea))
         );
         setTareaSeleccionada(null);
       } else {
-        alertaError();
-        alert("Error al actualizar la tarea");
+        alertaError("Error", "Error al actualizar la tarea");
       }
     } catch (error) {
       console.error("Error al guardar cambios:", error);
     }
   };
 
-  function eliminarTarea(id) {
+  const eliminarTarea = (id) => {
     alertaEliminar(id, api, seTareasApi);
-  }
+  };
 
   return (
     <section className="lista-tareas">
@@ -75,8 +79,8 @@ export default function Tareas({ estado, api, tareasApi, seTareasApi }) {
         </h3>
       )}
       <ul>
-        {(tareasFiltradas.length > 0 ? tareasFiltradas : tareasApi).map(
-          (tarea) => (
+        {tareasFiltradas.length > 0 ? (
+          tareasFiltradas.map((tarea) => (
             <li
               key={tarea.id}
               className={
@@ -89,7 +93,7 @@ export default function Tareas({ estado, api, tareasApi, seTareasApi }) {
               <button
                 className="btn-cerrar"
                 onClick={(e) => {
-                  e.stopPropagation(); // evita que se dispare abrirModal al hacer clic en la X
+                  e.stopPropagation();
                   eliminarTarea(tarea.id);
                 }}
               >
@@ -100,15 +104,15 @@ export default function Tareas({ estado, api, tareasApi, seTareasApi }) {
               <p>Fecha límite: {tarea.fechaLimite}</p>
               <p>Estado: {tarea.estado}</p>
             </li>
-          )
+          ))
+        ) : (
+          <p className="mensaje-vacio">No hay tareas para mostrar.</p>
         )}
       </ul>
 
-      {/* Modal de edición */}
       {tareaSeleccionada && (
         <div className="modal">
           <div className="modal-content">
-            {console.log()}
             <h3>Editar Tarea</h3>
             <form>
               <label>
@@ -152,9 +156,7 @@ export default function Tareas({ estado, api, tareasApi, seTareasApi }) {
             </form>
             <div className="botones-modal">
               <button onClick={guardarCambios}>Guardar</button>
-              <button onClick={() => setTareaSeleccionada(null)}>
-                Cancelar
-              </button>
+              <button onClick={() => setTareaSeleccionada(null)}>Cancelar</button>
             </div>
           </div>
         </div>

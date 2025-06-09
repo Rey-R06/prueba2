@@ -6,6 +6,8 @@ let apiTareas = "http://localhost:3001/tareas";
 import "./CrearTarea.css";
 
 export default function CrearTarea() {
+
+  let estudiante = JSON.parse(localStorage.getItem("estudiante"));
   const navigate = useNavigate();
 
   const [formulario, setFormulario] = useState({
@@ -13,6 +15,7 @@ export default function CrearTarea() {
     materia: "",
     fechaLimite: "",
     estado: "pendiente",
+    idEstudiante: estudiante.id
   });
 
   const manejarCambio = (e) => {
@@ -35,7 +38,7 @@ export default function CrearTarea() {
 
       if (respuesta.ok) {
         alertaConfirmacion("Creado", "La tarea fue creada exitosamente");
-        navigate("/"); // redirige a la lista de tareas
+        navigate("/panel-inicio"); // redirige a la lista de tareas
       } else {
         alertaError("Error", "Hubo un problema al crear la tarea");
       }

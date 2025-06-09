@@ -104,6 +104,31 @@
     visibility: hidden;
   }
 
+.botones-cerrar {
+  display: flex;
+  align-items: center;
+  margin-top: 1.8%;
+  margin-right: 3%;
+}
+
+.botones-cerrar button {
+  background-color: rgb(255, 46, 46);
+  color: var(--fuente-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botones-cerrar button:hover {
+  background-color: rgba(255, 70, 70, 0.678);
+  transform: scale(1.05);
+}
+
+
 
 /* Para tablets */
 @media (max-width: 900px) { 

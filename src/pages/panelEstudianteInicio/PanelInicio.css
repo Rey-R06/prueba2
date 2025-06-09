@@ -23,6 +23,10 @@
   text-align: center;
 }
 
+.resumen-tareas button{
+  background: transparent;
+  border: none;
+}
 .resumen-tareas a{
   text-decoration: none;
 }
