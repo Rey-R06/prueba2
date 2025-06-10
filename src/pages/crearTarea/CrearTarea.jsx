@@ -6,7 +6,6 @@ let apiTareas = "http://localhost:3001/tareas";
 import "./CrearTarea.css";
 
 export default function CrearTarea() {
-
   let estudiante = JSON.parse(localStorage.getItem("estudiante"));
   const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ export default function CrearTarea() {
     materia: "",
     fechaLimite: "",
     estado: "pendiente",
-    idEstudiante: estudiante.id
+    idEstudiante: estudiante.id,
   });
 
   const manejarCambio = (e) => {
@@ -26,13 +25,14 @@ export default function CrearTarea() {
     });
   };
 
-  const crearTarea = async () => {  // Validación básica
+  const crearTarea = async () => {
+    // Validación básica
     const { titulo, materia, fechaLimite, estado } = formulario;
 
-  if (!titulo.trim() || !materia.trim() || !fechaLimite || !estado) {
-    alertaError("Campos vacíos", "Por favor completa todos los campos.");
-    return;
-  }
+    if (!titulo.trim() || !materia.trim() || !fechaLimite || !estado) {
+      alertaError("Campos vacíos", "Por favor completa todos los campos.");
+      return;
+    }
     try {
       const respuesta = await fetch(`${apiTareas}`, {
         method: "POST",
@@ -51,12 +51,12 @@ export default function CrearTarea() {
     } catch (error) {
       console.error("Error al crear tarea:", error);
       alertaError("Error", "Error inesperado al crear la tarea");
-    }
+    } 
   };
 
   return (
     <>
-    <Header />
+      <Header />
       <div className="crear-tarea-container">
         <h2>Crear Nueva Tarea</h2>
         <form>
@@ -92,10 +92,7 @@ export default function CrearTarea() {
 
           <label>
             Estado:
-            <select
-              name="estado"
-              onChange={manejarCambio}
-            >
+            <select name="estado" onChange={manejarCambio}>
               <option value="pendiente">Pendiente</option>
               <option value="completada">Completada</option>
             </select>

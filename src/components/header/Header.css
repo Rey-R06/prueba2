@@ -172,7 +172,7 @@
     position: absolute;
     top: 135px;
     width: 100%;
-    height: 250px;
+    height: 50px;
     background-color: #2e2f04;
     animation: subirMenu 0.4s ease-in forwards;
   }
@@ -184,8 +184,9 @@
     margin: 0;
     top: 135px;
     width: 100%;
-    height: 250px;
-    background-color: var(--cafe-color);
+    height: 60px;
+    background-color: var(--azul-color);
+    border-bottom: 2px solid var(--azulFuerte-color);
     animation: bajarMenu 0.4s ease-out forwards;
   }
 

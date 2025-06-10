@@ -7,6 +7,30 @@
       "fechaLimite": "2025-07-02",
       "estado": "pendiente",
       "idEstudiante": "7e0a"
+    },
+    {
+      "id": "2dec",
+      "titulo": "Leer capítulo 2 del libro de historia",
+      "materia": "matematica",
+      "fechaLimite": "2025-06-12",
+      "estado": "pendiente",
+      "idEstudiante": "fe29"
+    },
+    {
+      "id": "2eb7",
+      "titulo": "Leer capítulo 1 del libro de historia",
+      "materia": "juabeb",
+      "fechaLimite": "2025-06-11",
+      "estado": "completada",
+      "idEstudiante": "fe29"
+    },
+    {
+      "id": "4ccc",
+      "titulo": "tarea de exogenos ",
+      "materia": "exogenos",
+      "fechaLimite": "2007-04-22",
+      "estado": "completada",
+      "idEstudiante": "fe29"
     }
   ],
   "estudiantes": [

@@ -44,7 +44,7 @@ const navItems = [
         <button className="menu-hamburguesa" onClick={toggleMenu}>
           ☰
         </button>
-        <Link className="logo" to="/">
+        <Link className="logo">
           <img src="/logos/logo.png" alt="Logo EduWise Inc" />
         </Link>
         <nav
